@@ -1,0 +1,16 @@
+{
+    "extends": [
+        "@rocketseat/eslint-config/react",
+        "prettier",
+        "plugin:prettier/recommended"
+    ],
+    "rules": {
+        "prettier/prettier": [
+            "error",
+            {
+                "singlequotes": true,
+                "tabWidth": 2
+            }
+        ]
+    }
+}
