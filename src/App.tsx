@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { BrowserRouter } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import { Router } from "./Router";

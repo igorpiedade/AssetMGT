@@ -9,7 +9,7 @@
             "error",
             {
                 "singlequotes": true,
-                "tabWidth": 2
+                "tabWidth": 4
             }
         ]
     }
