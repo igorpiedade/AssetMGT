@@ -1,3 +1,9 @@
+import { HomeContainer } from "./styled";
+
 export function Home() {
-  return <h1>Home</h1>;
+  return (
+    <HomeContainer>
+      <h1>TESTE HOME</h1>
+    </HomeContainer>
+  );
 }

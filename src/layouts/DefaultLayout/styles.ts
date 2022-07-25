@@ -7,4 +7,10 @@ export const LayoutContainer = styled.div`
     height: 100vh;
 
     background: ${(props) => props.theme.bgThemeColor};
+
+    font-family: "Roboto", sans-serif;
+
+    .contentContainer {
+        width: 100%;
+    }
 `;

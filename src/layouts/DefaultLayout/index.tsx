@@ -9,7 +9,7 @@ export function DefaultLayout() {
             <div>
                 <Sidemenu />
             </div>
-            <div>
+            <div className="contentContainer">
                 <Header />
                 <Outlet />
             </div>
