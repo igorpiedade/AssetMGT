@@ -1,3 +1,3 @@
 export function Operations() {
-  return <h1>TESTE HOME</h1>;
+  return <h1>OPERATIONS</h1>;
 }

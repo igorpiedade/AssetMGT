@@ -2,6 +2,7 @@ import { SidemenuContainer } from "./styles";
 import { Gauge, Wallet, ListDashes, Coins } from "phosphor-react";
 
 import logoMGT from "../../assets/logo.svg";
+import { NavLink } from "react-router-dom";
 
 export function Sidemenu() {
     return (
@@ -10,18 +11,18 @@ export function Sidemenu() {
                 <img src={logoMGT} alt="" />
             </span>
             <nav>
-                <a href="#">
+                <NavLink to="/app" title="dashboard">
                     <Gauge size={32} weight="thin" /> DASHBORAD
-                </a>
-                <a href="#">
+                </NavLink>
+                <NavLink to="/app/wallet" title="wallet">
                     <Wallet size={32} weight="thin" /> WALLET
-                </a>
-                <a href="#">
+                </NavLink>
+                <NavLink to="/app/assets" title="assets">
                     <Coins size={32} weight="thin" /> ASSETS
-                </a>
-                <a href="#">
+                </NavLink>
+                <NavLink to="/app/operations" title="operations">
                     <ListDashes size={32} weight="thin" /> OPERATIONS
-                </a>
+                </NavLink>
             </nav>
         </SidemenuContainer>
     );

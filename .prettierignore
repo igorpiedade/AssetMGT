@@ -1,0 +1,2 @@
+# Due to some conflicts between prettier and ESLint, I'm disabling prettier in this project.
+src

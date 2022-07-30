@@ -1,14 +1,14 @@
 /* eslint-disable prettier/prettier */
-import { BiggerPositions, DashGrid, GridItems, HistoryGraph, LastOperations, PortifolioDistributionGraph, PortifolioPizzaGraph } from "./styled";
+import { DashGrid, GridArea1, GridArea2, GridArea3, GridArea4, GridArea5 } from "./styled";
 
 export function Dashboard() {
   return (
     <DashGrid>
-      <LastOperations>Last Operations</LastOperations>
-      <PortifolioPizzaGraph>Portifolio</PortifolioPizzaGraph>
-      <PortifolioDistributionGraph>Distribution</PortifolioDistributionGraph>
-      <HistoryGraph>History</HistoryGraph>
-      <BiggerPositions>10 Bigger Possitions</BiggerPositions>
+      <GridArea1>TESTE</GridArea1>
+      <GridArea2>TESTE</GridArea2>
+      <GridArea3>TESTE</GridArea3>
+      <GridArea4>TESTE</GridArea4>
+      <GridArea5>TESTE</GridArea5>
     </DashGrid>
   );
 }

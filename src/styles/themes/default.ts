@@ -5,6 +5,7 @@ export const defaultTheme = {
 
     bgSideMenuColor: "white",
     bgSideMenuHover: "#F5F5F5",
+    activeLinkSideMenu: "#F5F5F5",
     txtSideMenuColor: "black",
 
     txtHeaderColor: "black",

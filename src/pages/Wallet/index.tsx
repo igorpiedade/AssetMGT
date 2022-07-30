@@ -1,3 +1,3 @@
 export function Wallet() {
-  return <h1>TESTE HOME</h1>;
+  return <h1>WALLLET</h1>;
 }

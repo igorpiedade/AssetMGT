@@ -37,9 +37,14 @@ export const SidemenuContainer = styled.div`
             height: 3.75rem;
 
             border-radius: 8px;
-        }
-        a:hover {
-            background-color: ${(props) => props.theme.bgSideMenuHover};
+
+            &:hover {
+                background-color: ${(props) => props.theme.bgSideMenuHover};
+            }
+
+            &.active {
+                background-color: ${(props) => props.theme.activeLinkSideMenu};
+            }
         }
     }
 `;

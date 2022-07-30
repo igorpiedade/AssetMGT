@@ -8,9 +8,9 @@ export const DashGrid = styled.div`
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
     grid-template-areas:
-        "BG PP DT"
-        "GH GH LP"
-        "GH GH LP";
+        "BX1 BX2 BX3"
+        "BX4 BX4 BX5"
+        "BX4 BX4 BX5";
 
     grid-gap: 2rem;
     padding: 2rem;
@@ -22,22 +22,22 @@ export const GridItems = styled.div`
     padding: 2rem;
 `;
 
-export const LastOperations = styled(GridItems)`
-    grid-area: LP;
+export const GridArea1 = styled(GridItems)`
+    grid-area: BX1;
 `;
 
-export const PortifolioPizzaGraph = styled(GridItems)`
-    grid-area: PP;
+export const GridArea2 = styled(GridItems)`
+    grid-area: BX2;
 `;
 
-export const PortifolioDistributionGraph = styled(GridItems)`
-    grid-area: DT;
+export const GridArea3 = styled(GridItems)`
+    grid-area: BX3;
 `;
 
-export const HistoryGraph = styled(GridItems)`
-    grid-area: GH;
+export const GridArea4 = styled(GridItems)`
+    grid-area: BX4;
 `;
 
-export const BiggerPositions = styled(GridItems)`
-    grid-area: BG;
+export const GridArea5 = styled(GridItems)`
+    grid-area: BX5;
 `;
