@@ -1,7 +1,11 @@
 import { CurrencyCircleDollar, ArrowsDownUp } from "phosphor-react";
+import { useContext } from "react";
+import { AuthContext } from "../../contexts/authContext";
 import { HeaderContainer, ProfitLossPercent, TotalContainer } from "./styles";
 
 export function Header() {
+    const { user } = useContext(AuthContext);
+
     return (
         <HeaderContainer>
             <TotalContainer>
@@ -22,6 +26,7 @@ export function Header() {
                     <p>35%</p>
                 </span>
             </ProfitLossPercent>
+            <p>{user?.name}</p>
         </HeaderContainer>
     );
 }

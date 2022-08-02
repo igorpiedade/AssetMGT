@@ -1,10 +1,12 @@
 import { FormEvent, useContext, useState } from 'react'
 import { AuthContext } from '../../contexts/authContext';
 import { HomeContainer, LoginForm } from "./styled";
+import { useNavigate } from 'react-router-dom';
 
 
 export function Home() {
 
+  const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -20,7 +22,15 @@ export function Home() {
     }
 
     await signIn(loginData);
+    if (sessionStorage.getItem("token")) {
 
+      navigate("/app");
+
+    } else {
+
+      alert("email or password invalid!")
+
+    }
   }
   return (
     <HomeContainer>
