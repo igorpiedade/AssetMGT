@@ -13,5 +13,8 @@ export const defaultTheme = {
     txtTotalAssets: "#6C9F2A",
     txtPercentProfit: "#104CC0",
     txtLoss: "red",
-    bgHeaderColor: "#FDFCFC"
+    bgHeaderColor: "#FDFCFC",
+
+    calendarFilterColor: "#C3D4B4",
+    txtOperationsTitles: "#C3D4B4"
 };
