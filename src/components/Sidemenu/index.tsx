@@ -11,7 +11,7 @@ export function Sidemenu() {
                 <img src={logoMGT} alt="" />
             </span>
             <nav>
-                <NavLink to="/app" title="dashboard">
+                <NavLink to="/app/dashboard" title="dashboard">
                     <Gauge size={32} weight="thin" /> DASHBORAD
                 </NavLink>
                 <NavLink to="/app/wallet" title="wallet">

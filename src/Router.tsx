@@ -13,6 +13,7 @@ export function Router() {
       <Route path="/" element={<Home />} />
       <Route path="/app" element={<DefaultLayout />} >
         <Route path="/app" element={<Dashboard />} />
+        <Route path="/app/dashboard" element={<Dashboard />} />
         <Route path="/app/wallet" element={<Wallet />} />
         <Route path="/app/assets" element={<AssetsPage />} />
         <Route path="/app/operations" element={<Operations />} />
