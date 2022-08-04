@@ -35,15 +35,22 @@ export const OperationsTable = styled.table`
         background-color: ${props => props.theme.bgThemeColor};
         color: ${props => props.theme.txtOperationsTitles};
         height: 1.875rem;
-        border-bottom: 1px;
-        border-color: gray;
+        border-bottom: 0;
     }
 
     td {
-        height: 3rem;
+        height: 4rem;
         text-align: center;
-        border-bottom: 1px;
+    }
+    
+    tr {
+        border-bottom: 1px solid #F5F5F5;
         
+
+        &:hover {
+            font-weight: bold;
+            color: green;
+        }
     }
 
 `
