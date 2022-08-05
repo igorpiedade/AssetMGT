@@ -6,17 +6,18 @@ import { api } from "../../../../services/api";
 
 interface IOperationData {
     id: string;
-    date: Date;
+    created_at: Date;
     assetName: string;
+    walletName: string;
+    descriptio: string;
+    shares: number;
+    amount: number;
 }
 
 export function ListOperations() {
 
-    const { data, isFetching } = useQuery<IOperationData>(['operation'], async () => {
+    const queryOperation = useQuery<IOperationData>(['operation'], async () => {
         const response = await api.get('operation');
-
-        console.log(response.data);
-
         return response.data;
     })
 
@@ -30,7 +31,13 @@ export function ListOperations() {
                     <CaretDown />
                 </DataFilter>
             </Header>
-            {/* {isFetching && <span>Loading...</span>}
+
+            <ul>
+                {queryOperation.data?.map(operation => (
+                    <li key={operation.id}>{operation.Assets.assetName}</li>
+                 ))}
+            </ul>
+
             <OperationsTable>
                 <tbody>
                     <tr>
@@ -42,21 +49,22 @@ export function ListOperations() {
                         <th>WALLET</th>
                         <th>AMOUT</th>
                     </tr>
-                    {data?.map(operation => {
-                        return (
-                            <tr key={operation.id}>
-                                <td>{operation.date}</td>
-                                <td>NYS:O</td>
-                                <td>BUY</td>
-                                <td>10</td>
-                                <td>$57,90</td>
-                                <td>WEBULL</td>
-                                <td>$579,00</td>
-                            </tr>
-                        )
-                    })}
+                    {queryOperation.data?.map(operation => (
+    
+                    <tr key={operation.id}>
+                        <td>{operation.created_at}</td>
+                        <td>{operation.Assets.assetName}</td>
+                        <td>BUY</td>
+                        <td>{operation.shares}</td>
+                        <td>${operation.amount/operation.shares}</td>
+                        <td>{operation.Wallets.walletName}</td>
+                        <td>{operation.amount}</td>
+                    </tr>
+                   
+                   ))}
+                    
                 </tbody>
-            </OperationsTable> */}
+            </OperationsTable>
         </>
     );
 }
