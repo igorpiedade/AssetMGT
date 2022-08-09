@@ -16,5 +16,8 @@ export const defaultTheme = {
     bgHeaderColor: "#FDFCFC",
 
     calendarFilterColor: "#C3D4B4",
-    txtOperationsTitles: "#C3D4B4"
+    txtOperationsTitles: "#C3D4B4",
+
+    bgButton: "#6C9F2A",
+    txtButton: "white"
 };

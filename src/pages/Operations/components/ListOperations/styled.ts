@@ -11,6 +11,11 @@ export const Header = styled.div`
         font-size: 1.125rem;
     };
 `
+export const ActionControllers = styled.div`
+    display: flex;
+    justify-content: right;
+    gap: 2rem;
+`
 export const DataFilter = styled.div`
     display: flex;
     width: 7.6875rem;
@@ -24,6 +29,16 @@ export const DataFilter = styled.div`
     vertical-align: middle;
     padding: 0.5rem;
 `
+export const NewOperationButton = styled.button`
+    width: 7.6875rem;
+    height: 2.125rem;
+    border-radius: 0.5rem;
+    color: ${props => props.theme.txtButton};
+    background-color: ${props => props.theme.bgButton};
+    border: 0;
+    cursor: pointer ;
+`
+
 export const OperationsTable = styled.table`
     margin-top: 1rem;
     width: 100%;
@@ -48,8 +63,7 @@ export const OperationsTable = styled.table`
         
 
         &:hover {
-            font-weight: bold;
-            color: green;
+            color: ${props => props.theme.bgButton};
         }
     }
 

@@ -8,9 +8,9 @@ export const Grid = styled.div`
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
     grid-template-areas:
-        "BX1 BX1 BX2"
-        "BX1 BX1 BX3"
-        "BX1 BX1 BX4";
+        "BX2 BX3 BX4"
+        "BX1 BX1 BX1"
+        "BX1 BX1 BX1";
 
     grid-gap: 2rem;
     padding: 2rem;
