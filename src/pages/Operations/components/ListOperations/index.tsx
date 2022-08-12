@@ -5,7 +5,7 @@ import * as moment from "moment";
 import { useQuery } from "@tanstack/react-query";
 import { api } from "../../../../services/api";
 import { useState } from "react";
-import { AddNewOperation } from "../../../../components/addOperation";
+import { AddNewOperationModal } from "../../../../components/addNewOperationModal";
 
 interface IOperationData {
     id: string;
@@ -20,10 +20,10 @@ interface IOperationData {
 
 export function ListOperations() {
 
-    const [isModalOpen, setModalVisible] = useState(false);
+    const [isNewOperationModalOpen, setNewOperationModalVisible] = useState(false);
 
     const { data, isFetching } = useQuery<IOperationData>(['operation'], async () => {
-    
+
         const response = await api.get('operation', {
             headers: {
                 'authorization': `Bearer ${sessionStorage.getItem("token")}`
@@ -44,7 +44,7 @@ export function ListOperations() {
                         <span>ALL</span>
                         <CaretDown />
                     </DataFilter>
-                    <NewOperationButton onClick={() => setModalVisible(true)}>
+                    <NewOperationButton onClick={() => setNewOperationModalVisible(true)}>
                         NEW OPERATIONS
                     </NewOperationButton>
 
@@ -79,7 +79,7 @@ export function ListOperations() {
                 </tbody>
             </OperationsTable>
             {isFetching && <p>Loading...</p>}
-            {isModalOpen && <AddNewOperation />}
+            {isNewOperationModalOpen && <AddNewOperationModal />}
         </>
     );
 }
