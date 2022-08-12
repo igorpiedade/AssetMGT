@@ -19,5 +19,7 @@ export const defaultTheme = {
     txtOperationsTitles: "#C3D4B4",
 
     bgButton: "#6C9F2A",
-    txtButton: "white"
+    txtButton: "white",
+
+    formInputsBorderColor: "#C3D4B4"
 };

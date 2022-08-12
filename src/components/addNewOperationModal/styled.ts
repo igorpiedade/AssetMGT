@@ -27,15 +27,38 @@ export const NewOperationForm = styled.div`
         margin-bottom: 2rem;
     }
 
-    input {
-        margin-bottom: 1rem;
-        height: 2rem;
-        border: 1 green;
-        
+    label {
+        margin-bottom: -10px;
+        font-size: 1rem;
+        padding-left: 1rem;
+        z-index: 1;
     }
 
+    input {
+        margin-bottom: 1rem;
+        padding: 1rem;
+        height: 3rem;
+        border: 1px solid ${props => props.theme.formInputsBorderColor};
+        border-radius: 8px;
+        
+        &::-webkit-outer-spin-button,
+        &::-webkit-inner-spin-button {
+    
+            -webkit-appearance: none;
+             margin: 0; 
+        }
+    }
+    
     select {
         margin-bottom: 1rem;
+        padding: 1rem;
+        height: 3rem;
+        border: 1px solid ${props => props.theme.formInputsBorderColor};
+        border-radius: 8px;
+        box-sizing: border-box;
+                
+        background: white;
+        -webkit-appearance:none;
     }
 
     div {
