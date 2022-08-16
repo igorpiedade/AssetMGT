@@ -67,5 +67,18 @@ export const NewOperationForm = styled.div`
         justify-content: center;
         gap: 2rem;
     }
+    mark {
+        background: white;
+    }
+
+    button {
+        width: 8rem;
+        height: 3.5rem;
+        border: 1px solid;
+        border-radius: 10px;
+        font-size: 1rem;
+        color: white;
+        cursor: pointer;
+    }
     
 `

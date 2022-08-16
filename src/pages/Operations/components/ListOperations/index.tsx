@@ -79,7 +79,7 @@ export function ListOperations() {
                 </tbody>
             </OperationsTable>
             {isFetching && <p>Loading...</p>}
-            {isNewOperationModalOpen && <AddNewOperationModal />}
+            {isNewOperationModalOpen && <AddNewOperationModal closeModal={setNewOperationModalVisible} />}
         </>
     );
 }
