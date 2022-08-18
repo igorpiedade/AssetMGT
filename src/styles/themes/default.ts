@@ -20,6 +20,8 @@ export const defaultTheme = {
 
     bgButton: "#6C9F2A",
     txtButton: "white",
+    bgButtonCancel: "#FF3232",
 
     formInputsBorderColor: "#C3D4B4"
+
 };

@@ -70,15 +70,18 @@ export const NewOperationForm = styled.div`
     mark {
         background: white;
     }
-
     button {
         width: 8rem;
         height: 3.5rem;
         border: 1px solid;
         border-radius: 10px;
-        font-size: 1rem;
-        color: white;
+        color: ${props => props.theme.txtButton};
         cursor: pointer;
     }
-    
+`
+export const ButtonCancel = styled.button`
+        background-color: ${props => props.theme.bgButtonCancel};
+`
+export const ButtonSubmit = styled.button`
+        background-color: ${props => props.theme.bgButton};
 `
