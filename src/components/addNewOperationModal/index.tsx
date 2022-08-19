@@ -14,21 +14,40 @@ interface IWallet {
     walletName: string;
 }
 
+interface IDescriptions {
+    id: string;
+    description: string;
+}
 
 
 export function AddNewOperationModal({ closeModal }) {
 
     const assetlist = useQuery<IAsset>(['asset'], async () => {
-        const response = await api.get('asset');
+        const response = await api.get('asset', {
+            headers: {
+                'authorization': `Bearer ${sessionStorage.getItem("token")}`
+            }
+        });
         return response.data;
     })
 
-    const walletList = useQuery<IAsset>(['wallet'], async () => {
-        const response = await api.get('wallet');
+    const walletList = useQuery<IWallet>(['wallet'], async () => {
+        const response = await api.get('wallet', {
+            headers: {
+                'authorization': `Bearer ${sessionStorage.getItem("token")}`
+            }
+        });
         return response.data;
     })
 
-
+    const descriptionList = useQuery<IDescriptions>(['description'], async () => {
+        const response = await api.get('description', {
+            headers: {
+                'authorization': `Bearer ${sessionStorage.getItem("token")}`
+            }
+        });
+        return response.data;
+    })
 
     const [asset_id, setAsset_id] = useState('');
     const [shares, setShares] = useState('');
@@ -44,7 +63,7 @@ export function AddNewOperationModal({ closeModal }) {
             wallet_id,
             operationDescription_id,
         }
-        alert(newOperation)
+        console.log(newOperation);
     }
     return (
         <ModalContainer>
@@ -69,8 +88,8 @@ export function AddNewOperationModal({ closeModal }) {
 
 
                 <label><mark>&nbsp;Wallet: &nbsp;</mark></label>
-                <select name="wallet_id" onChange={e => setWallet_id(e.target.value)} >
-                    <option value=""> {assetlist.isFetching && "Loading..."} </option>
+                <select name="wallet_id" defaultValue="default" onChange={e => setWallet_id(e.target.value)} >
+                    <option value="default" > { walletList.isFetching && "Loading..."} </option>
 
                     {walletList.data?.map(wallet => (
                         <option key={wallet.id} value={wallet.id}>{wallet.walletName}</option>
@@ -79,8 +98,13 @@ export function AddNewOperationModal({ closeModal }) {
                 </select>
 
                 <label><mark>&nbsp;Operation Description: &nbsp;</mark></label>
-                <select name="description_id" onChange={e => setOperationDescription_id(e.target.value)} >
-                    <option value=""></option>
+                <select name="description_id" defaultValue="default" onChange={e => setOperationDescription_id(e.target.value)} >
+                    <option value="default">{ descriptionList.isFetching && "Loading..." }</option>
+
+                    {descriptionList.data?.map(description => (
+                        <option key={description.id} value={description.id}>{description.description}</option>
+                    ))}
+
                 </select>
                 <div>
                     <ButtonCancel onClick={() => closeModal(false)}>CANCEL</ButtonCancel>
