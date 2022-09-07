@@ -10,7 +10,6 @@ export function Operations() {
       </OperationsContainer>
       <SideBox1>TESTE</SideBox1>
       <SideBox2>TESTE</SideBox2>
-      <SideBox3>TESTE</SideBox3>
     </Grid>
 
   )

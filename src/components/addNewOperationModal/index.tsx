@@ -1,5 +1,5 @@
 /* eslint-disable camelcase */
-import { useQueries, useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useState } from "react"
 import { api } from "../../services/api";
 import { ModalContainer, NewOperationForm, ButtonCancel, ButtonSubmit } from "./styled"
@@ -19,8 +19,7 @@ interface IDescriptions {
     description: string;
 }
 
-
-export function AddNewOperationModal({ closeModal }) {
+export function AddNewOperationModal({ viewModal }) {
 
     const assetlist = useQuery<IAsset>(['asset'], async () => {
         const response = await api.get('asset', {
@@ -49,22 +48,43 @@ export function AddNewOperationModal({ closeModal }) {
         return response.data;
     })
 
+    const queryClient = useQueryClient()
+
+    const mutation = useMutation(newOperation => {
+        return (api.post('operation', newOperation, {
+            headers: {
+                'authorization': `Bearer ${sessionStorage.getItem("token")}`
+            }
+        })
+            .catch(function (error) {
+                console.log(error)
+            })
+        )
+    }, {
+        onSuccess: data => {
+            queryClient.refetchQueries();
+        }
+    });
+
     const [asset_id, setAsset_id] = useState('');
-    const [shares, setShares] = useState('');
-    const [amount, setAmount] = useState('');
+    const [sharesT, setShares] = useState('');
+    const [amountT, setAmount] = useState('');
     const [wallet_id, setWallet_id] = useState('');
     const [operationDescription_id, setOperationDescription_id] = useState('');
 
     async function handleSubmit() {
-        const newOperation = {
+
+        mutation.mutate({
             asset_id,
-            shares,
-            amount,
+            shares: parseFloat(sharesT),
+            amount: parseFloat(amountT),
             wallet_id,
             operationDescription_id,
-        }
-        console.log(newOperation);
+        })
+
+        viewModal(false)
     }
+
     return (
         <ModalContainer>
             <NewOperationForm>
@@ -89,7 +109,7 @@ export function AddNewOperationModal({ closeModal }) {
 
                 <label><mark>&nbsp;Wallet: &nbsp;</mark></label>
                 <select name="wallet_id" defaultValue="default" onChange={e => setWallet_id(e.target.value)} >
-                    <option value="default" > { walletList.isFetching && "Loading..."} </option>
+                    <option value="default" > {walletList.isFetching && "Loading..."} </option>
 
                     {walletList.data?.map(wallet => (
                         <option key={wallet.id} value={wallet.id}>{wallet.walletName}</option>
@@ -99,7 +119,7 @@ export function AddNewOperationModal({ closeModal }) {
 
                 <label><mark>&nbsp;Operation Description: &nbsp;</mark></label>
                 <select name="description_id" defaultValue="default" onChange={e => setOperationDescription_id(e.target.value)} >
-                    <option value="default">{ descriptionList.isFetching && "Loading..." }</option>
+                    <option value="default">{descriptionList.isFetching && "Loading..."}</option>
 
                     {descriptionList.data?.map(description => (
                         <option key={description.id} value={description.id}>{description.description}</option>
@@ -107,7 +127,7 @@ export function AddNewOperationModal({ closeModal }) {
 
                 </select>
                 <div>
-                    <ButtonCancel onClick={() => closeModal(false)}>CANCEL</ButtonCancel>
+                    <ButtonCancel onClick={() => viewModal(false)}>CANCEL</ButtonCancel>
                     <ButtonSubmit onClick={handleSubmit}>SUBMIT</ButtonSubmit>
                 </div>
             </NewOperationForm>

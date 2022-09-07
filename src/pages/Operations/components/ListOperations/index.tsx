@@ -1,6 +1,6 @@
 import { CalendarBlank, CaretDown } from "phosphor-react";
 import { ActionControllers, DataFilter, Header, NewOperationButton, OperationsTable } from "./styled";
-import * as moment from "moment";
+import { dateFormat, moneyFormat } from "../../../../utils/formatter";
 
 import { useQuery } from "@tanstack/react-query";
 import { api } from "../../../../services/api";
@@ -65,13 +65,13 @@ export function ListOperations() {
                     {data?.map(operation => (
 
                         <tr key={operation.id}>
-                            <td>{moment(operation.created_at).format("MM/DD/YY")}</td>
+                            <td>{dateFormat.format(new Date(operation.created_at))}</td>
                             <td>{operation.Assets.assetName}</td>
                             <td>BUY</td>
                             <td>{operation.shares}</td>
-                            <td>${operation.amount / operation.shares}</td>
+                            <td>{moneyFormat.format(operation.amount / operation.shares)}</td>
                             <td>{operation.Wallets.walletName}</td>
-                            <td>${operation.amount}</td>
+                            <td>{moneyFormat.format(operation.amount)}</td>
                         </tr>
 
                     ))}
@@ -79,7 +79,7 @@ export function ListOperations() {
                 </tbody>
             </OperationsTable>
             {isFetching && <p>Loading...</p>}
-            {isNewOperationModalOpen && <AddNewOperationModal closeModal={setNewOperationModalVisible} />}
+            {isNewOperationModalOpen && <AddNewOperationModal viewModal={setNewOperationModalVisible} />}
         </>
     );
 }
